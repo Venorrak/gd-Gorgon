@@ -1,0 +1,186 @@
+[gd_scene format=3 uid="uid://cyvdjju460hmd"]
+
+[ext_resource type="Script" uid="uid://cqgkdckq0gljh" path="res://addons/gorgon/nodes/graph.gd" id="1_6uqi0"]
+[ext_resource type="Script" uid="uid://d2qwiuh8f15uy" path="res://addons/gorgon/nodes/graph_branch.gd" id="2_ppyta"]
+[ext_resource type="Script" uid="uid://btxd5rte6qhoi" path="res://addons/gorgon/resources/graph_lines/graph_soft_line.gd" id="2_ykrsh"]
+[ext_resource type="Script" uid="uid://0pggqp43tawd" path="res://addons/gorgon/resources/graph_forces/graph_force.gd" id="3_ehkex"]
+[ext_resource type="Script" uid="uid://ycon4j7cwyrd" path="res://addons/gorgon/nodes/atom.gd" id="3_ykrsh"]
+[ext_resource type="Script" uid="uid://dknjwvy7fii32" path="res://addons/gorgon/resources/graph_forces/spring_force.gd" id="4_xersf"]
+[ext_resource type="Script" uid="uid://nxremqc4guop" path="res://addons/gorgon/resources/graph_forces/replusion_force.gd" id="5_00tp4"]
+[ext_resource type="Script" uid="uid://c0oaw1mtho31d" path="res://addons/gorgon/resources/graph_forces/cluster_replusion_force.gd" id="6_77dp3"]
+[ext_resource type="Script" uid="uid://d331yms67sd8u" path="res://addons/gorgon/resources/highlight_pattern/highlight_ancestors.gd" id="8_00tp4"]
+
+[sub_resource type="Resource" id="Resource_g14j6"]
+script = ExtResource("2_ykrsh")
+metadata/_custom_type_script = "uid://btxd5rte6qhoi"
+
+[sub_resource type="Resource" id="Resource_5tkv4"]
+script = ExtResource("4_xersf")
+target_length = 60.0
+hub_bonus_length = 60.0
+metadata/_custom_type_script = "uid://dknjwvy7fii32"
+
+[sub_resource type="Resource" id="Resource_0m0f1"]
+script = ExtResource("5_00tp4")
+metadata/_custom_type_script = "uid://nxremqc4guop"
+
+[sub_resource type="Resource" id="Resource_b0q6j"]
+script = ExtResource("6_77dp3")
+overlap_hardness = 100.0
+metadata/_custom_type_script = "uid://c0oaw1mtho31d"
+
+[sub_resource type="Resource" id="Resource_77dp3"]
+script = ExtResource("8_00tp4")
+metadata/_custom_type_script = "uid://d331yms67sd8u"
+
+[node name="Control" type="Control" unique_id=1665031839]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Graph" type="Control" parent="." unique_id=1558812138]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6uqi0")
+graph_lines = SubResource("Resource_g14j6")
+boundary_shape = 1
+multi_select_action = "ui_select"
+physics_forces = Array[ExtResource("3_ehkex")]([SubResource("Resource_5tkv4"), SubResource("Resource_0m0f1"), SubResource("Resource_b0q6j")])
+highlight_pattern = SubResource("Resource_77dp3")
+metadata/_custom_type_script = "uid://cqgkdckq0gljh"
+
+[node name="GraphBranch" type="Control" parent="Graph" unique_id=1670861417]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 84.0
+offset_top = 90.0
+offset_right = 134.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_ppyta")
+metadata/_custom_type_script = "uid://d2qwiuh8f15uy"
+
+[node name="Atom" type="Control" parent="Graph/GraphBranch" unique_id=451635816]
+custom_minimum_size = Vector2(128, 128)
+anchors_preset = 0
+offset_left = 204.0
+offset_top = 44.0
+offset_right = 332.0
+offset_bottom = 172.0
+pivot_offset = Vector2(64, 64)
+script = ExtResource("3_ykrsh")
+id = &"a"
+metadata/_custom_type_script = "uid://ycon4j7cwyrd"
+
+[node name="Atom2" type="Control" parent="Graph/GraphBranch" unique_id=1772082462]
+custom_minimum_size = Vector2(128, 128)
+anchors_preset = 0
+offset_left = -181.0
+offset_top = 58.0
+offset_right = -53.0
+offset_bottom = 186.0
+pivot_offset = Vector2(64, 64)
+script = ExtResource("3_ykrsh")
+id = &"b"
+metadata/_custom_type_script = "uid://ycon4j7cwyrd"
+
+[node name="Atom3" type="Control" parent="Graph/GraphBranch" unique_id=2022372237]
+custom_minimum_size = Vector2(128, 128)
+anchors_preset = 0
+offset_left = 11.0
+offset_top = 84.0
+offset_right = 139.0
+offset_bottom = 212.0
+pivot_offset = Vector2(64, 64)
+script = ExtResource("3_ykrsh")
+id = &"c"
+metadata/_custom_type_script = "uid://ycon4j7cwyrd"
+
+[node name="Atom" type="Control" parent="Graph" unique_id=1279679915]
+custom_minimum_size = Vector2(128, 128)
+anchors_preset = 0
+offset_left = 840.0
+offset_top = 300.0
+offset_right = 968.0
+offset_bottom = 428.0
+pivot_offset = Vector2(64, 64)
+script = ExtResource("3_ykrsh")
+id = &"d"
+metadata/_custom_type_script = "uid://ycon4j7cwyrd"
+
+[node name="Atom2" type="Control" parent="Graph" unique_id=1094484722]
+custom_minimum_size = Vector2(128, 128)
+anchors_preset = 0
+offset_left = 285.0
+offset_top = 212.0
+offset_right = 413.0
+offset_bottom = 340.0
+pivot_offset = Vector2(64, 64)
+script = ExtResource("3_ykrsh")
+id = &"e"
+metadata/_custom_type_script = "uid://ycon4j7cwyrd"
+
+[node name="Atom3" type="Control" parent="Graph" unique_id=2084473495]
+custom_minimum_size = Vector2(128, 128)
+anchors_preset = 0
+offset_left = 445.0
+offset_top = 141.0
+offset_right = 573.0
+offset_bottom = 269.0
+pivot_offset = Vector2(64, 64)
+script = ExtResource("3_ykrsh")
+id = &"f"
+childrens = Array[NodePath]([NodePath("../Atom6")])
+metadata/_custom_type_script = "uid://ycon4j7cwyrd"
+
+[node name="Atom4" type="Control" parent="Graph" unique_id=1119691198]
+custom_minimum_size = Vector2(128, 128)
+anchors_preset = 0
+offset_left = 742.0
+offset_top = 169.0
+offset_right = 870.0
+offset_bottom = 297.0
+pivot_offset = Vector2(64, 64)
+script = ExtResource("3_ykrsh")
+id = &"g"
+metadata/_custom_type_script = "uid://ycon4j7cwyrd"
+
+[node name="Atom5" type="Control" parent="Graph" unique_id=353577496]
+custom_minimum_size = Vector2(128, 128)
+anchors_preset = 0
+offset_left = 564.0
+offset_top = 288.0
+offset_right = 692.0
+offset_bottom = 416.0
+pivot_offset = Vector2(64, 64)
+script = ExtResource("3_ykrsh")
+id = &"h"
+childrens = Array[NodePath]([NodePath("../GraphBranch/Atom"), NodePath("../GraphBranch/Atom2"), NodePath("../GraphBranch/Atom3"), NodePath("../Atom"), NodePath("../Atom2"), NodePath("../Atom3"), NodePath("../Atom4")])
+is_static = true
+drag_input = false
+metadata/_custom_type_script = "uid://ycon4j7cwyrd"
+
+[node name="Atom6" type="Control" parent="Graph" unique_id=1376013437]
+custom_minimum_size = Vector2(128, 128)
+anchors_preset = 0
+offset_left = 375.0
+offset_top = 45.0
+offset_right = 503.0
+offset_bottom = 173.0
+pivot_offset = Vector2(64, 64)
+script = ExtResource("3_ykrsh")
+id = &"i"
+metadata/_custom_type_script = "uid://ycon4j7cwyrd"
